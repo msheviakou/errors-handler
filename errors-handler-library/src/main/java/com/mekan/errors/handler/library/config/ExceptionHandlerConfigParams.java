@@ -20,4 +20,10 @@ public class ExceptionHandlerConfigParams {
         public static final String ILLEGAL_ACCESS_STATUS = "illegal.access.status";
         public static final String RESOURCE_NOT_FOUND_STATUS = "resource.not.found.status";
     }
+
+    public static class Web {
+        public static final String METHOD_ARGUMENT_NOT_VALID_MESSAGE = "method.argument.not.valid.message";
+
+        public static final String METHOD_ARGUMENT_NOT_VALID_STATUS = "method.argument.not.valid.status";
+    }
 }

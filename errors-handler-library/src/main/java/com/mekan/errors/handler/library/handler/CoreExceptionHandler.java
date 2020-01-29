@@ -15,22 +15,26 @@ import static org.springframework.util.StringUtils.hasText;
 
 @RequiredArgsConstructor
 @ControllerAdvice
-public class RestCoreExceptionHandler extends RestExceptionHandler {
+public class CoreExceptionHandler implements ExceptionHandlerResponse {
 
     private final ExceptionHandlerConfig exceptionHandlerConfig;
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity handle(NoSuchElementException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(NO_SUCH_ELEMENT_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(NO_SUCH_ELEMENT_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(NO_SUCH_ELEMENT_MESSAGE)))
                 .build());
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity handle(IllegalArgumentException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(ILLEGAL_ARGUMENT_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(ILLEGAL_ARGUMENT_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(ILLEGAL_ARGUMENT_MESSAGE)))
                 .build());
     }

@@ -14,6 +14,7 @@ public class ExceptionHandlerProperties {
     private String fileStorageMessage;
     private String illegalAccessMessage;
     private String resourceNotFoundMessage;
+    private String methodArgumentNotValidMessage;
 
     private Integer noSuchElementStatus;
     private Integer illegalArgumentStatus;
@@ -21,4 +22,5 @@ public class ExceptionHandlerProperties {
     private Integer fileStorageStatus;
     private Integer illegalAccessStatus;
     private Integer resourceNotFoundStatus;
+    private Integer methodArgumentNotValidStatus;
 }

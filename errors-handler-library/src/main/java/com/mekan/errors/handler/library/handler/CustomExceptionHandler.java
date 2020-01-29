@@ -17,38 +17,46 @@ import static org.springframework.util.StringUtils.hasText;
 
 @RequiredArgsConstructor
 @ControllerAdvice
-public class RestCustomExceptionHandler extends RestExceptionHandler {
+public class CustomExceptionHandler implements ExceptionHandlerResponse {
 
     private final ExceptionHandlerConfig exceptionHandlerConfig;
 
     @ExceptionHandler(FileNotReadException.class)
     public ResponseEntity handle(FileNotReadException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(FILE_NOT_READ_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(FILE_NOT_READ_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(FILE_NOT_READ_MESSAGE)))
                 .build());
     }
 
     @ExceptionHandler(FileStorageException.class)
     public ResponseEntity handle(FileStorageException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(FILE_STORAGE_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(FILE_STORAGE_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(FILE_STORAGE_MESSAGE)))
                 .build());
     }
 
     @ExceptionHandler(IllegalAccessException.class)
     public ResponseEntity handle(IllegalAccessException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(ILLEGAL_ACCESS_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(ILLEGAL_ACCESS_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(ILLEGAL_ACCESS_MESSAGE)))
                 .build());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity handle(ResourceNotFoundException e) {
+        HttpStatus httpStatus = HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(RESOURCE_NOT_FOUND_STATUS));
         return buildResponseEntity(ApiError.builder()
-                .status(HttpStatus.valueOf((Integer) exceptionHandlerConfig.get(RESOURCE_NOT_FOUND_STATUS)))
+                .status(httpStatus.value())
+                .error(httpStatus.name())
                 .message(hasText(e.getMessage()) ? e.getMessage() : String.format("%s", exceptionHandlerConfig.get(RESOURCE_NOT_FOUND_MESSAGE)))
                 .build());
     }
