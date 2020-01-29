@@ -1,6 +1,8 @@
 package com.mekan.errors.handler.library.exception;
 
 public class FileNotReadException extends RuntimeException {
+    public FileNotReadException() { super(); }
+
     public FileNotReadException(Throwable cause) {
         super(cause);
     }

@@ -6,20 +6,17 @@
     <parent>
         <groupId>com.mekan</groupId>
         <artifactId>errors-handler</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../errors-handler</relativePath>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>errors-handler-autoconfigure</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>errors-handler-autoconfigure</name>
     <description>Auto-configuration for errors-handler-library</description>
 
     <properties>
-        <java.version>11</java.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-        <errors.handler.library.version>0.0.1-SNAPSHOT</errors.handler.library.version>
+        <errors.handler.library.version>1.0-SNAPSHOT</errors.handler.library.version>
     </properties>
 
     <dependencies>
@@ -47,19 +44,4 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

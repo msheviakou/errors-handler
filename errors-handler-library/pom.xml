@@ -6,18 +6,15 @@
     <parent>
         <groupId>com.mekan</groupId>
         <artifactId>errors-handler</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../errors-handler</relativePath>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>errors-handler-library</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>errors-handler-library</name>
     <description>Library for handling REST API's errors</description>
 
     <properties>
-        <java.version>11</java.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <spring.version>5.2.3.RELEASE</spring.version>
         <jackson.version>2.10.2</jackson.version>
         <org.projectlombok.version>1.18.0</org.projectlombok.version>
@@ -47,19 +44,4 @@
             <version>${org.projectlombok.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

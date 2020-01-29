@@ -15,6 +15,7 @@ import static com.mekan.errors.handler.library.config.ExceptionHandlerConfigPara
 import static com.mekan.errors.handler.library.config.ExceptionHandlerConfigParams.Custom.*;
 import static com.mekan.errors.handler.library.config.ExceptionHandlerConfigParams.Web.METHOD_ARGUMENT_NOT_VALID_MESSAGE;
 import static com.mekan.errors.handler.library.config.ExceptionHandlerConfigParams.Web.METHOD_ARGUMENT_NOT_VALID_STATUS;
+import static org.springframework.util.StringUtils.hasText;
 import static org.springframework.util.StringUtils.isEmpty;
 
 @RequiredArgsConstructor
@@ -90,10 +91,14 @@ public class ExceptionAutoConfiguration {
     }
 
     private void fillWebHandlerConfig(ExceptionHandlerConfig exceptionHandlerConfig) {
-        String methodArgumentNotValidMessage = isEmpty(exceptionHandlerProperties.getMethodArgumentNotValidMessage())? "Method argument not valid exception" : exceptionHandlerProperties.getMethodArgumentNotValidMessage();
-        Integer methodArgumentNotValidStatus = exceptionHandlerProperties.getMethodArgumentNotValidStatus() == null ? 400 : exceptionHandlerProperties.getMethodArgumentNotValidStatus();
+        String methodArgumentNotValidMessage = exceptionHandlerProperties.getMethodArgumentNotValidMessage();
+        if (hasText(methodArgumentNotValidMessage)) {
+            exceptionHandlerConfig.put(METHOD_ARGUMENT_NOT_VALID_MESSAGE, methodArgumentNotValidMessage);
+        }
 
-        exceptionHandlerConfig.put(METHOD_ARGUMENT_NOT_VALID_MESSAGE, methodArgumentNotValidMessage);
-        exceptionHandlerConfig.put(METHOD_ARGUMENT_NOT_VALID_STATUS, methodArgumentNotValidStatus);
+        Integer methodArgumentNotValidStatus = exceptionHandlerProperties.getMethodArgumentNotValidStatus();
+        if (methodArgumentNotValidStatus != null) {
+            exceptionHandlerConfig.put(METHOD_ARGUMENT_NOT_VALID_STATUS, methodArgumentNotValidStatus);
+        }
     }
 }

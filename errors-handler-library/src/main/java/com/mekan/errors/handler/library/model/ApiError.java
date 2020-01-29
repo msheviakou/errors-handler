@@ -3,7 +3,6 @@ package com.mekan.errors.handler.library.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -19,5 +18,5 @@ public class ApiError {
 
     @Builder.Default
     @JsonFormat(shape = STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private final LocalDateTime timeStamp = LocalDateTime.now();
+    private final LocalDateTime timestamp = LocalDateTime.now();
 }

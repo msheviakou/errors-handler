@@ -5,9 +5,14 @@
 
     <groupId>com.mekan</groupId>
     <artifactId>errors-handler</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>errors-handler</name>
 	<packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    </properties>
 
     <modules>
         <module>errors-handler-library</module>
@@ -15,4 +20,17 @@
 		<module>errors-handler-spring-boot-starter</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
